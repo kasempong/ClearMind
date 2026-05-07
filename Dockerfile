@@ -20,6 +20,9 @@ RUN cd frontend && npm run build
 COPY backend/requirements.txt ./backend/
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
+ARG CACHEBUST=1
+RUN echo "Cache bust: $CACHEBUST"
+
 COPY backend/ ./backend/
 
 ENV FRONTEND_DIST=/app/frontend/dist
